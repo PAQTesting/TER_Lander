@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cell & Gene Therapy Elevated - Terumo</title>
+  <meta name="description" content="Join Terumo's clinical & operations leaders to advance procedural excellence at scale for cell and gene therapy."/>
+
+  <!-- Google Fonts: Roboto (variable) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary-green:#00A652;
+      --dark-green:#008140;
+      --light-green:#E8F5E9;
+      --accent-green:#4CAF50;
+      --text-dark:#1A1A1A;
+      --text-gray:#4A5568;
+      --white:#FFFFFF;
+      --border-light:#E2E8F0;
+      --shadow-sm:0 2px 4px rgba(0,0,0,.05);
+      --shadow-md:0 4px 12px rgba(0,0,0,.1);
+      --shadow-lg:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    /* Global typography: Roboto everywhere */
+    body{
+      font-family:'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, 'Apple Color Emoji','Segoe UI Emoji', sans-serif;
+      color:var(--text-dark);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    /* Ensure form controls also use Roboto */
+    input,select,textarea,button{font-family:inherit}
+
+    /* Headings */
+    h1{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.1;font-weight:900;letter-spacing:-.02em}
+    h2{font-size:clamp(2rem,4vw,3rem);line-height:1.2;font-weight:700}
+    h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:600}
+
+    /* Skip link */
+    .skip-link{position:absolute;top:-40px;left:0;background:var(--primary-green);color:#fff;padding:8px;text-decoration:none;z-index:100}
+    .skip-link:focus{top:0}
+
+    /* Header */
+    header{position:sticky;top:0;background:var(--white);box-shadow:var(--shadow-sm);z-index:1000;padding:1rem 0}
+    .header-content{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center}
+    .logo{height:40px;width:auto}
+
+    nav{display:flex;gap:2rem;align-items:center}
+    nav a{color:var(--text-gray);text-decoration:none;font-weight:500;transition:color .3s}
+    nav a:hover,nav a:focus{color:var(--primary-green);outline:none}
+
+    .btn-primary{background:var(--primary-green);color:#fff;padding:.75rem 1.5rem;border-radius:6px;border:none;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block}
+    .btn-primary:hover,.btn-primary:focus{background:var(--dark-green);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+    /* Hero */
+    .hero{padding:3rem 0 4rem;background:#fff;position:relative;overflow:hidden}
+    .hero-container{
+      max-width:1200px;margin:0 auto;padding:0 1.5rem;
+      display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;
+      align-items:stretch; /* stretch both columns to the tallest (form) */
+      position:relative;
+    }
+    .hero-left{position:relative;padding-top:2rem;z-index:10;height:100%} /* fill row height */
+
+    .hero-headlines{position:relative}
+    .hero-headlines h1{
+      color:var(--primary-green);
+      font-size:clamp(3rem,6vw,5rem);
+      font-weight:900;line-height:.95;margin-bottom:1.5rem;letter-spacing:-.03em
+    }
+    .hero-subhead{font-size:clamp(1.125rem,2vw,1.5rem);color:var(--text-gray);margin-bottom:2rem;font-weight:400}
+
+    .hero-image{
+      position:absolute;left:50%;transform:translateX(-50%);
+      bottom:0; /* align bottoms with the form */
+      z-index:1;width:min(600px,90%);height:auto;opacity:.08;filter:grayscale(100%);pointer-events:none;
+    }
+
+    .hero-description{margin-top:2rem;color:var(--text-gray);font-size:1rem;line-height:1.6;max-width:450px;position:relative}
+
+    /* Form card */
+    .form-card{background:#fff;padding:2.5rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.08);position:relative;z-index:10}
+    .form-card h3{font-size:1.75rem;margin-bottom:.5rem;color:var(--text-dark)}
+    .form-subtitle{color:var(--text-gray);margin-bottom:2rem;font-size:1rem}
+    .form-group{margin-bottom:1.25rem}
+    label{display:block;margin-bottom:.5rem;font-weight:500;color:var(--text-dark)}
+    input,select,textarea{width:100%;padding:.75rem;border:2px solid var(--border-light);border-radius:6px;font-size:1rem;transition:border-color .3s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-green);box-shadow:0 0 0 3px rgba(0,166,82,.1)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .checkbox-group{display:flex;align-items:start;gap:.5rem;margin:1.5rem 0}
+    .checkbox-group input[type="checkbox"]{width:auto;margin-top:.25rem}
+    .checkbox-group label{margin-bottom:0;font-weight:400;font-size:.9rem}
+    .error-message{color:#dc3545;font-size:.875rem;margin-top:.25rem;display:none}
+    .form-group.error input,.form-group.error select{border-color:#dc3545}
+    .form-group.error .error-message{display:block}
+
+    /* Green effect */
+    .green-effect{position:relative;padding:6rem 0;background:linear-gradient(135deg,var(--primary-green) 0%,var(--dark-green) 100%);overflow:hidden}
+    .green-effect::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(255,255,255,.1) 0%,transparent 50%);animation:float 20s ease-in-out infinite}
+    .green-effect::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 Q300,0 600,50 T1200,50 L1200,100 L0,100 Z' fill='white' opacity='0.1'/%3E%3C/svg%3E");background-size:cover}
+    @keyframes float{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(30px,-30px) rotate(180deg)}}
+    @media (prefers-reduced-motion:reduce){.green-effect::before{animation:none}}
+
+    .green-content{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 1.5rem}
+    .green-content h2{color:#fff;text-align:center;margin-bottom:1rem}
+    .green-subtitle{color:rgba(255,255,255,.9);text-align:center;font-size:1.25rem;margin-bottom:3rem}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+    .feature-card{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:1.5rem;border-radius:8px;border:1px solid rgba(255,255,255,.2);transition:transform .3s}
+    .feature-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.15)}
+    .feature-card h4{color:#fff;margin-bottom:.5rem}
+    .feature-card p{color:rgba(255,255,255,.9);font-size:.95rem}
+
+    /* Testimonials */
+    .testimonials{padding:4rem 0;background:#f8f9fa}
+    .testimonials-container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+    .carousel{position:relative;overflow:hidden;margin:2rem 0}
+    .carousel-track{display:flex;transition:transform .5s ease}
+    .carousel-slide{flex:0 0 100%;padding:0 2rem}
+    .testimonial{background:#fff;padding:2rem;border-radius:8px;box-shadow:var(--shadow-md);text-align:center}
+    .testimonial-content{font-size:1.125rem;font-style:italic;margin-bottom:1.5rem;color:var(--text-gray)}
+    .testimonial-author{font-weight:600;color:var(--primary-green)}
+    .carousel-controls{display:flex;justify-content:center;align-items:center;gap:2rem;margin-top:2rem}
+    .carousel-btn{background:var(--primary-green);color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;font-size:1.25rem}
+    .carousel-btn:hover,.carousel-btn:focus{background:var(--dark-green);transform:scale(1.1)}
+    .carousel-dots{display:flex;gap:.5rem}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--border-light);border:none;cursor:pointer;transition:background .3s}
+    .dot.active{background:var(--primary-green)}
+
+    /* Speakers */
+    .speakers{padding:4rem 0}
+    .speakers-container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+    .speakers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:3rem}
+    .speaker-card{text-align:center;padding:1.5rem;border-radius:8px;transition:transform .3s}
+    .speaker-card:hover{transform:translateY(-5px)}
+    .speaker-avatar{width:100px;height:100px;margin:0 auto 1rem;background:var(--light-green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:3rem}
+
+    /* Agenda */
+    .agenda{padding:4rem 0;background:#f8f9fa}
+    .agenda-container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+    .agenda-item{background:#fff;padding:1.5rem;border-radius:8px;margin-bottom:1rem;display:flex;gap:2rem;border-left:4px solid var(--primary-green)}
+    .agenda-time{font-weight:600;color:var(--primary-green);min-width:100px}
+
+    /* Stats */
+    .stats{padding:4rem 0}
+    .stats-container{max-width:900px;margin:0 auto;padding:0 1.5rem;text-align:center}
+    .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;margin-top:3rem}
+    .stat{text-align:center}
+    .stat-number{font-size:3rem;font-weight:700;color:var(--primary-green)}
+    .stat-label{color:var(--text-gray);margin-top:.5rem}
+
+    /* FAQ */
+    .faq{padding:4rem 0;background:#f8f9fa}
+    .faq-container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+    .faq-item{background:#fff;border-radius:12px;margin-bottom:1rem;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:box-shadow .3s}
+    .faq-item:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    .faq-question{padding:1.5rem 2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:none;border:none;width:100%;text-align:left;font-size:1.125rem;font-weight:600;color:var(--text-dark);transition:color .3s;position:relative}
+    .faq-question:hover{color:var(--primary-green)}
+    .faq-question::after{content:'';position:absolute;bottom:0;left:2rem;right:2rem;height:1px;background:var(--border-light);opacity:0;transition:opacity .3s}
+    .faq-item.active .faq-question::after{opacity:1}
+    .faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--light-green);color:var(--primary-green);display:flex;align-items:center;justify-content:center;font-size:14px;transition:transform .3s,background .3s}
+    .faq-item.active .faq-icon{transform:rotate(180deg);background:var(--primary-green);color:#fff}
+    .faq-answer{padding:0 2rem;max-height:0;overflow:hidden;transition:max-height .4s ease, padding .4s ease;color:var(--text-gray);line-height:1.7}
+    .faq-item.active .faq-answer{padding:1rem 2rem 2rem;max-height:300px}
+
+    /* CTA */
+    .cta{background:linear-gradient(135deg,var(--primary-green),var(--dark-green));color:#fff;padding:4rem 0;text-align:center}
+    .cta-container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+    .cta h2{color:#fff;margin-bottom:1rem}
+    .cta p{font-size:1.25rem;margin-bottom:2rem}
+    .cta .btn-primary{background:#fff;color:var(--primary-green);font-size:1.125rem;padding:1rem 2rem}
+    .cta .btn-primary:hover{background:#f8f9fa}
+
+    /* Footer */
+    footer{background:var(--text-dark);color:#fff;padding:2rem 0;text-align:center}
+
+    /* Mobile */
+    @media (max-width:768px){
+      nav{display:none}
+      .hero-container{grid-template-columns:1fr;gap:3rem;align-items:start}
+      .hero-left{height:auto}
+      .hero-headlines h1{font-size:2.5rem}
+      .hero-image{
+        position:static;transform:none;width:100%;max-width:400px;opacity:.05;margin-top:1rem;
+      }
+      .hero-description{margin-top:1rem}
+      .form-card{margin-top:2rem}
+      .form-row{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:1fr}
+    }
+
+    /* Loading spinner */
+    .loading{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,.3);border-radius:50%;border-top-color:#fff;animation:spin 1s ease-in-out infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Focus */
+    :focus{outline:2px solid var(--primary-green);outline-offset:2px}
+
+    /* Success */
+    .success-message{background:var(--primary-green);color:#fff;padding:1rem;border-radius:6px;margin-bottom:1rem;display:none}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="header-content">
+      <img src="assets/Terumo_logo.png" alt="Terumo" class="logo" width="150" height="40">
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="#learn">What You'll Learn</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#register" class="btn-primary" data-cta="header-register">Register Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-left">
+          <div class="hero-headlines">
+            <h1>ACCELERATE.<br/>ELEVATE.<br/>EXPAND.</h1>
+            <p class="hero-subhead">Cell & Gene Therapy Elevated.</p>
+          </div>
+
+          <img src="assets/Terumo_man.png" alt="Healthcare Professional" class="hero-image" width="400" height="500" loading="eager"/>
+
+          <p class="hero-description">
+            Join Terumo's clinical & operations leaders to learn how top manufacturers streamline device adoption, data integrity, and site workflow—from first pilot to global rollout.
+          </p>
+        </div>
+
+        <div class="form-card" id="register">
+          <div class="success-message" id="successMessage">Registration successful! Check your email for details.</div>
+          <h3>Reserve Your Seat</h3>
+          <p class="form-subtitle">Join industry leaders for this exclusive webinar</p>
+
+          <form id="registrationForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name*</label>
+                <input type="text" id="firstName" name="firstName" required aria-required="true"/>
+                <span class="error-message">First name is required</span>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name*</label>
+                <input type="text" id="lastName" name="lastName" required aria-required="true"/>
+                <span class="error-message">Last name is required</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="workEmail">Work Email*</label>
+              <input type="email" id="workEmail" name="workEmail" required aria-required="true"/>
+              <span class="error-message">Please enter a valid work email</span>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company*</label>
+              <input type="text" id="company" name="company" required aria-required="true"/>
+              <span class="error-message">Company is required</span>
+            </div>
+
+            <div class="form-group">
+              <label for="role">Role*</label>
+              <select id="role" name="role" required aria-required="true">
+                <option value="">Select your role</option>
+                <option value="regulatory">Regulatory & Quality</option>
+                <option value="clinical">Clinical Operations</option>
+                <option value="medical">Medical Affairs</option>
+                <option value="market">Market Access</option>
+                <option value="commercial">Commercial Enablement</option>
+                <option value="procurement">Procurement</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="error-message">Please select your role</span>
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country*</label>
+              <select id="country" name="country" required aria-required="true">
+                <option value="">Select your country</option>
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="jp">Japan</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="error-message">Please select your country</span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">What would you like to learn?</label>
+              <textarea id="message" name="message" rows="3" placeholder="Share your questions or interests..."></textarea>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="consent" name="consent" required aria-required="true"/>
+              <label for="consent">I agree to receive communications from Terumo about this webinar and related resources.*</label>
+            </div>
+            <span class="error-message" id="consent-error" style="display:none;">Please accept the terms to continue</span>
+
+            <button type="submit" class="btn-primary" style="width:100%;" data-cta="hero-primary">
+              <span class="btn-text">Reserve Your Seat</span>
+              <span class="loading" style="display:none;"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Green Effect -->
+    <section class="green-effect" id="learn">
+      <div class="green-content">
+        <h2>Expert insights for pharmaceutical excellence</h2>
+        <p class="green-subtitle">What You'll Learn</p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <h4>Rollout Playbook</h4>
+            <p>Moving from pilot to 100+ sites without chaos—proven strategies for scaling device adoption across complex healthcare environments.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Compliance-by-Design</h4>
+            <p>Keeping programs inspection-ready across regions with built-in GxP alignment, SOPs, and audit trail mechanisms.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Data That Matters</h4>
+            <p>Capturing outcomes & operational signals that influence adoption—real-time insights for decision-making.</p>
+          </div>
+          <div class="feature-card">
+            <h4>People Layer</h4>
+            <p>Training, proctoring, and field support that actually scales—building competency across diverse clinical teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers -->
+    <section class="speakers" id="speakers">
+      <div class="speakers-container">
+        <h2 style="text-align:center;">Learn from Terumo's Leadership Team</h2>
+        <div class="speakers-grid">
+          <div class="speaker-card">
+            <div class="speaker-avatar">👩‍⚕️</div>
+            <h4>Dr. Joanna B., MD, FACC</h4>
+            <p>Interventional Programs, Terumo</p>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-avatar">👨‍💼</div>
+            <h4>Kunsan Kim, MS</h4>
+            <p>Director, Clinical Operations, Terumo</p>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-avatar">👩‍🔬</div>
+            <h4>Dr. Deborah L., RAC</h4>
+            <p>Senior Manager, Regulatory & Quality, Terumo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agenda -->
+    <section class="agenda" id="agenda">
+      <div class="agenda-container">
+        <h2 style="text-align:center;">45 Minutes of Actionable Insights</h2>
+        <div style="margin-top:2rem;">
+          <div class="agenda-item">
+            <div class="agenda-time">0-5 min</div>
+            <div>
+              <h4>Welcome & Goals</h4>
+              <p>Setting the stage for procedural excellence at scale</p>
+            </div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">5-20 min</div>
+            <div>
+              <h4>Case Patterns from Large-Scale Rollouts</h4>
+              <p>Real-world examples and lessons learned from global implementations</p>
+            </div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">20-30 min</div>
+            <div>
+              <h4>Compliance & Data Integrity Mechanisms</h4>
+              <p>SOPs, training protocols, and audit trails that ensure regulatory readiness</p>
+            </div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">30-40 min</div>
+            <div>
+              <h4>Live Q&A</h4>
+              <p>Your questions answered by our expert panel</p>
+            </div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">40-45 min</div>
+            <div>
+              <h4>Next Steps & Resources</h4>
+              <p>Takeaways and additional materials for continued learning</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stats-container">
+        <h2>Proven Results at Scale</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-number">1,000+</div>
+            <div class="stat-label">Hospital sites supported globally</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">63</div>
+            <div class="stat-label">NPS with clinical teams</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="testimonials-container">
+        <h2 style="text-align:center;">What Industry Leaders Say</h2>
+        <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide" role="group" aria-label="Quote 1 of 5">
+              <div class="testimonial">
+                <p class="testimonial-content">"Terumo brought repeatable rigor to our site rollouts—without slowing us down."</p>
+                <p class="testimonial-author">— VP, Clinical Operations, Global Pharma</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Quote 2 of 5">
+              <div class="testimonial">
+                <p class="testimonial-content">"The compliance framework saved us months of audit preparation. Everything was inspection-ready from day one."</p>
+                <p class="testimonial-author">— Director, Quality Assurance, Top 10 Pharma</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Quote 3 of 5">
+              <div class="testimonial">
+                <p class="testimonial-content">"Real-time data visibility transformed our decision-making process. We went from quarterly reviews to daily insights."</p>
+                <p class="testimonial-author">— SVP, Medical Affairs, Biotech Leader</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Quote 4 of 5">
+              <div class="testimonial">
+                <p class="testimonial-content">"Training 500+ clinicians across 50 sites seemed impossible until we implemented Terumo's scalable approach."</p>
+                <p class="testimonial-author">— Head of Clinical Training, Global Medical Device Company</p>
+              </div>
+            </div>
+            <div class="carousel-slide" role="group" aria-label="Quote 5 of 5">
+              <div class="testimonial">
+                <p class="testimonial-content">"The ROI was clear within 6 months. Reduced site onboarding time by 40% while improving compliance scores."</p>
+                <p class="testimonial-author">— Chief Operating Officer, Specialty Pharma</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="prevBtn" aria-label="Previous testimonial" aria-controls="carouselTrack">‹</button>
+            <div class="carousel-dots" role="tablist" aria-label="Testimonial indicators">
+              <button class="dot active" role="tab" aria-selected="true" aria-label="Go to testimonial 1"></button>
+              <button class="dot" role="tab" aria-selected="false" aria-label="Go to testimonial 2"></button>
+              <button class="dot" role="tab" aria-selected="false" aria-label="Go to testimonial 3"></button>
+              <button class="dot" role="tab" aria-selected="false" aria-label="Go to testimonial 4"></button>
+              <button class="dot" role="tab" aria-selected="false" aria-label="Go to testimonial 5"></button>
+            </div>
+            <button class="carousel-btn" id="nextBtn" aria-label="Next testimonial" aria-controls="carouselTrack">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="faq-container">
+        <h2 style="text-align:center;margin-bottom:3rem;">Frequently Asked Questions</h2>
+        <div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Will the recording be available?</span><span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes—the recording will be sent to all registered participants within 24 hours after the webinar concludes. You'll receive a link via email that will remain accessible for 30 days.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Who should attend?</span><span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>This webinar is designed for pharmaceutical professionals in Regulatory & Quality, Clinical Operations, Medical Affairs, Market Access, Commercial Enablement, and Procurement roles. Whether you're implementing new cell and gene therapy programs or optimizing existing workflows, you'll gain actionable insights.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Is there a cost to attend?</span><span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>No, this educational webinar is provided at no cost to qualifying pharmaceutical industry professionals. We believe in sharing knowledge to advance the entire field of cell and gene therapy.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How long is the webinar?</span><span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>The webinar is 45 minutes total, including a live Q&A session. We recommend blocking 60 minutes on your calendar to allow for any technical setup time. Materials and resources will be shared after the session for deeper exploration.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What technology do I need to join?</span><span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>You can join from any device with an internet connection. We recommend using a computer with Chrome, Firefox, or Safari for the best experience. No special software download is required—you'll receive a simple link to join via your browser.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta">
+      <div class="cta-container">
+        <h2>Ready to standardize adoption at scale?</h2>
+        <p>Join hundreds of pharmaceutical leaders advancing procedural excellence</p>
+        <a href="#register" class="btn-primary" data-cta="footer-primary">Reserve Your Seat Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Terumo. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
+  </footer>
+
+  <script>
+    // Form Validation
+    const form = document.getElementById('registrationForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      let isValid = true;
+      const requiredFields = form.querySelectorAll('[required]');
+
+      requiredFields.forEach(field=>{
+        const group = field.closest('.form-group');
+        if ((!field.value?.trim()) || (field.type==='checkbox' && !field.checked)){
+          if(group) group.classList.add('error');
+          isValid = false;
+        }else{
+          if(group) group.classList.remove('error');
+        }
+        if(field.type==='email' && field.value){
+          const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if(!emailRegex.test(field.value)){
+            if(group) group.classList.add('error');
+            isValid=false;
+          }
+        }
+      });
+
+      const consent = document.getElementById('consent');
+      const consentError = document.getElementById('consent-error');
+      if(!consent.checked){consentError.style.display='block';isValid=false;} else {consentError.style.display='none';}
+
+      if(isValid){
+        const formData = new FormData(form);
+        console.log('Form submitted:', Object.fromEntries(formData));
+
+        const btnText = this.querySelector('.btn-text');
+        const loading = this.querySelector('.loading');
+        btnText.style.display='none';
+        loading.style.display='inline-block';
+
+        setTimeout(()=>{
+          successMessage.style.display='block';
+          form.reset();
+          btnText.style.display='inline';
+          loading.style.display='none';
+          successMessage.scrollIntoView({behavior:'smooth',block:'center'});
+        },1500);
+      }
+    });
+
+    form.querySelectorAll('input,select,textarea').forEach(field=>{
+      field.addEventListener('input',function(){
+        const group=this.closest('.form-group');
+        if(group) group.classList.remove('error');
+      });
+    });
+
+    // Carousel
+    const track=document.getElementById('carouselTrack');
+    const slides=track.querySelectorAll('.carousel-slide');
+    const dots=document.querySelectorAll('.dot');
+    const prevBtn=document.getElementById('prevBtn');
+    const nextBtn=document.getElementById('nextBtn');
+    let currentSlide=0, autoplayInterval, isPaused=false;
+
+    function goToSlide(i){
+      currentSlide=i;
+      track.style.transform=`translateX(-${currentSlide*100}%)`;
+      dots.forEach((dot,idx)=>{dot.classList.toggle('active', idx===currentSlide);dot.setAttribute('aria-selected', idx===currentSlide);});
+    }
+    const nextSlide=()=>goToSlide((currentSlide+1)%slides.length);
+    const prevSlide=()=>goToSlide((currentSlide-1+slides.length)%slides.length);
+
+    function startAutoplay(){
+      if(!isPaused && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        autoplayInterval=setInterval(nextSlide,6000);
+      }
+    }
+    function stopAutoplay(){clearInterval(autoplayInterval);}
+
+    prevBtn.addEventListener('click',()=>{prevSlide();stopAutoplay();startAutoplay();});
+    nextBtn.addEventListener('click',()=>{nextSlide();stopAutoplay();startAutoplay();});
+    dots.forEach((dot,idx)=>dot.addEventListener('click',()=>{goToSlide(idx);stopAutoplay();startAutoplay();}));
+
+    const carousel=document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter',()=>{isPaused=true;stopAutoplay();});
+    carousel.addEventListener('mouseleave',()=>{isPaused=false;startAutoplay();});
+    carousel.addEventListener('focusin',()=>{isPaused=true;stopAutoplay();});
+    carousel.addEventListener('focusout',()=>{isPaused=false;startAutoplay();});
+
+    // Touch support
+    let touchStartX=0,touchEndX=0;
+    track.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;});
+    track.addEventListener('touchend',e=>{touchEndX=e.changedTouches[0].screenX;handleSwipe();});
+    function handleSwipe(){ if(touchEndX < touchStartX - 50) nextSlide(); if(touchEndX > touchStartX + 50) prevSlide(); }
+
+    startAutoplay();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const item=btn.closest('.faq-item');
+        const isOpen=item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(f=>{f.classList.remove('active');f.querySelector('.faq-question').setAttribute('aria-expanded','false');});
+        if(!isOpen){item.classList.add('active');btn.setAttribute('aria-expanded','true');}
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+      anchor.addEventListener('click',function(e){
+        e.preventDefault();
+        const target=document.querySelector(this.getAttribute('href'));
+        if(target){
+          const offset=80;
+          const top=target.offsetTop - offset;
+          window.scrollTo({top, behavior:'smooth'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
