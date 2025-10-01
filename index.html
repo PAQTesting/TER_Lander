@@ -64,12 +64,13 @@
     .hero-container{
       max-width:1200px;margin:0 auto;padding:0 1.5rem;
       display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;
-      align-items:stretch; /* stretch both columns to the tallest (form) */
+      align-items:stretch;
       position:relative;
+      min-height:600px;
     }
-    .hero-left{position:relative;padding-top:2rem;z-index:10;height:100%} /* fill row height */
+    .hero-left{position:relative;padding-top:2rem;z-index:10;height:100%;display:flex;flex-direction:column;justify-content:space-between;}
 
-    .hero-headlines{position:relative}
+    .hero-headlines{position:relative;z-index:2;}
     .hero-headlines h1{
       color:var(--primary-green);
       font-size:clamp(3rem,6vw,5rem);
@@ -78,19 +79,28 @@
     .hero-subhead{font-size:clamp(1.125rem,2vw,1.5rem);color:var(--text-gray);margin-bottom:2rem;font-weight:400}
 
     .hero-image{
-      position:absolute;left:50%;transform:translateX(-50%);
-      bottom:0; /* align bottoms with the form */
-      z-index:1;width:min(600px,90%);height:auto;opacity:.08;filter:grayscale(100%);pointer-events:none;
-    }
+    position: absolute;
+    left: -5%;
+    bottom: 0;
+    transform: translate(-10px, 0px); /* Right 30px, up 20px */
+    z-index: 1;
+    width: auto;
+    height: auto;
+    max-height: 65%;
+    opacity: 1;
+    filter: none;
+    pointer-events: none;
+    object-fit: contain;
+  }
 
-    .hero-description{margin-top:2rem;color:var(--text-gray);font-size:1rem;line-height:1.6;max-width:450px;position:relative}
+    .hero-description{margin-top:auto;color:var(--text-gray);font-size:1rem;line-height:1.6;max-width:450px;position:relative;z-index:2;padding-bottom:2rem;}
 
     /* Form card */
-    .form-card{background:#fff;padding:2.5rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.08);position:relative;z-index:10}
-    .form-card h3{font-size:1.75rem;margin-bottom:.5rem;color:var(--text-dark)}
+    .form-card{background:#fff;padding:1.5rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.08);position:relative;z-index:10}
+    .form-card h3{font-size:1.75rem;margin-bottom:.1rem;color:var(--text-dark)}
     .form-subtitle{color:var(--text-gray);margin-bottom:2rem;font-size:1rem}
     .form-group{margin-bottom:1.25rem}
-    label{display:block;margin-bottom:.5rem;font-weight:500;color:var(--text-dark)}
+    label{display:block;margin-bottom:0rem;font-weight:500;color:var(--text-dark)}
     input,select,textarea{width:100%;padding:.75rem;border:2px solid var(--border-light);border-radius:6px;font-size:1rem;transition:border-color .3s}
     input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-green);box-shadow:0 0 0 3px rgba(0,166,82,.1)}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -101,12 +111,37 @@
     .form-group.error input,.form-group.error select{border-color:#dc3545}
     .form-group.error .error-message{display:block}
 
-    /* Green effect */
-    .green-effect{position:relative;padding:6rem 0;background:linear-gradient(135deg,var(--primary-green) 0%,var(--dark-green) 100%);overflow:hidden}
-    .green-effect::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(255,255,255,.1) 0%,transparent 50%);animation:float 20s ease-in-out infinite}
-    .green-effect::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 Q300,0 600,50 T1200,50 L1200,100 L0,100 Z' fill='white' opacity='0.1'/%3E%3C/svg%3E");background-size:cover}
-    @keyframes float{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(30px,-30px) rotate(180deg)}}
-    @media (prefers-reduced-motion:reduce){.green-effect::before{animation:none}}
+    /* Green effect with background image */
+    .green-effect{
+      position:relative;
+      padding:6rem 0;
+      background:linear-gradient(135deg,var(--primary-green) 0%,var(--dark-green) 100%);
+      overflow:hidden;
+    }
+    .green-effect::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background-image:url('assets/ter-green_cells.png');
+      background-size:cover;
+      background-position:center;
+      opacity:0.3;
+      z-index:0;
+    }
+    .green-effect::after{
+      content:'';
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:100px;
+      background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 Q300,0 600,50 T1200,50 L1200,100 L0,100 Z' fill='white' opacity='0.1'/%3E%3C/svg%3E");
+      background-size:cover;
+      z-index:1;
+    }
 
     .green-content{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 1.5rem}
     .green-content h2{color:#fff;text-align:center;margin-bottom:1rem}
@@ -139,7 +174,21 @@
     .speakers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:3rem}
     .speaker-card{text-align:center;padding:1.5rem;border-radius:8px;transition:transform .3s}
     .speaker-card:hover{transform:translateY(-5px)}
-    .speaker-avatar{width:100px;height:100px;margin:0 auto 1rem;background:var(--light-green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:3rem}
+    .speaker-avatar{
+      width:100px;
+      height:100px;
+      margin:0 auto 1rem;
+      border-radius:50%;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .speaker-avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
     /* Agenda */
     .agenda{padding:4rem 0;background:#f8f9fa}
@@ -183,13 +232,19 @@
     /* Mobile */
     @media (max-width:768px){
       nav{display:none}
-      .hero-container{grid-template-columns:1fr;gap:3rem;align-items:start}
+      .hero-container{grid-template-columns:1fr;gap:3rem;align-items:start;min-height:auto;}
       .hero-left{height:auto}
       .hero-headlines h1{font-size:2.5rem}
       .hero-image{
-        position:static;transform:none;width:100%;max-width:400px;opacity:.05;margin-top:1rem;
+        position:static;
+        left:auto;
+        width:100%;
+        height:auto;
+        max-height:300px;
+        opacity:.15;
+        margin-top:1rem;
       }
-      .hero-description{margin-top:1rem}
+      .hero-description{margin-top:1rem;padding-bottom:0;}
       .form-card{margin-top:2rem}
       .form-row{grid-template-columns:1fr}
       .stats-grid{grid-template-columns:1fr}
@@ -233,9 +288,6 @@
 
           <img src="assets/Terumo_man.png" alt="Healthcare Professional" class="hero-image" width="400" height="500" loading="eager"/>
 
-          <p class="hero-description">
-            Join Terumo's clinical & operations leaders to learn how top manufacturers streamline device adoption, data integrity, and site workflow—from first pilot to global rollout.
-          </p>
         </div>
 
         <div class="form-card" id="register">
@@ -352,19 +404,25 @@
         <h2 style="text-align:center;">Learn from Terumo's Leadership Team</h2>
         <div class="speakers-grid">
           <div class="speaker-card">
-            <div class="speaker-avatar">👩‍⚕️</div>
-            <h4>Dr. Joanna B., MD, FACC</h4>
+            <div class="speaker-avatar">
+              <img src="assets/Ter-person-1.png" alt="Dr. John D."/>
+            </div>
+            <h4>Dr. John D., MD, FACC</h4>
             <p>Interventional Programs, Terumo</p>
           </div>
           <div class="speaker-card">
-            <div class="speaker-avatar">👨‍💼</div>
-            <h4>Kunsan Kim, MS</h4>
+            <div class="speaker-avatar">
+              <img src="assets/Ter-person-2.png" alt="Jane D."/>
+            </div>
+            <h4>Jane D., MS</h4>
             <p>Director, Clinical Operations, Terumo</p>
           </div>
           <div class="speaker-card">
-            <div class="speaker-avatar">👩‍🔬</div>
-            <h4>Dr. Deborah L., RAC</h4>
-            <p>Senior Manager, Regulatory & Quality, Terumo</p>
+            <div class="speaker-avatar">
+              <img src="assets/Ter-person-3.png" alt="Dr. Smith"/>
+            </div>
+            <h4>Dr. Smith, RAC</h4>
+            <p>SVP, Regulatory & Quality, Terumo</p>
           </div>
         </div>
       </div>
